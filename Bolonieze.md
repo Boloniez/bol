@@ -1,8 +1,10 @@
 ### Задание 5 19.09.2023
 
 ## 1
+```sql
 SELECT person.id, person.name, "age", "gender", "address", pizzeria.id, pizzeria.name, "rating" FROM "person", "pizzeria"
 ORDER BY pizzeria.id ASC;
+```
 
 ![image](https://github.com/Boloniez/bol/assets/145553853/fcc1fff0-f0d1-4a60-9b39-24fef1009895)
 
