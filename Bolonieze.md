@@ -17,5 +17,39 @@ ORDER BY "order_date" ASC;
 
 ![image](https://github.com/Boloniez/bol/assets/145553853/a7402295-c046-4fd8-a7cb-817dcab0f4bb)
 
+## 3
+```sql
+SELECT "order_date", ("name" || ' (age:' || "age" || ')') AS person_information FROM "person_order"
+JOIN "person" ON "person_id" = person.id
+ORDER BY "order_date" ASC, "person_information" ASC;
+```
 
+![image](https://github.com/Boloniez/bol/assets/145553853/6be1aeed-dbfb-4014-9f04-260e0992fed9)
 
+### 4
+```sql
+SELECT order_date, (name || ' (age:' || age || ')') AS person_information FROM person_order NATURAL JOIN person
+ORDER BY order_date ASC, person_information ASC;
+```
+
+![image](https://github.com/Boloniez/bol/assets/145553853/a0ff9332-3b98-4ff4-afed-680efba4f76c)
+
+### 5
+```sql
+SELECT name FROM pizzeria
+WHERE id NOT IN
+(SELECT pizzeria_id FROM person_visits);
+```
+
+![image](https://github.com/Boloniez/bol/assets/145553853/da9e3c97-4005-4820-8ecd-de2f6cdffd26)
+
+### 6
+```sql
+SELECT person.name AS person_name, menu.pizza_name, pizzeria.name AS pizzeria_name FROM "person_order"
+JOIN "person" ON person.id = person_order.person_id
+LEFT JOIN "menu" ON menu.id = person_order.menu_id
+LEFT JOIN "pizzeria" ON pizzeria.id = menu.pizzeria_id
+ORDER BY "person_name", "pizza_name", "pizzeria_name";
+```
+
+![image](https://github.com/Boloniez/bol/assets/145553853/d850118c-eff9-4fa2-bcf4-edc9cd165b76)
